@@ -1,9 +1,10 @@
-- 👋 Hi, I’m @chadtied
-- 👀 I’m interested in making friends and learning new things
-- 🌱 I’m currently learning c
-- 📫 How to reach me chadluntied@gmail.com 
+const XLSX= require("xlsx");
+const workbook= XLSX.readFile("taiwan.xlsx");
 
-<!---
-chadtied/chadtied is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-You can click the Preview link to take a look at your changes.
---->
+let worksheet= {};
+
+for(const sheetName of workbook.SheetNames){
+    worksheet[sheetName]= XLSX.utils.sheet_to_json(workbook.Sheets[sheetName]);
+}
+var a= worksheet["工作表1"][1]['公司'];
+console.log(typeof(a));
